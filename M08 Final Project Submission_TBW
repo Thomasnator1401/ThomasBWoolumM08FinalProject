@@ -1,0 +1,29 @@
+class Pizza:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+class Order:
+    def __init__(self):
+        self.items = []
+
+    def add_pizza(self, pizza):
+        self.items.append(pizza)
+
+    def calculate_total(self):
+        return sum([pizza.price for pizza in self.items])
+
+# Define some pizzas
+margherita = Pizza("Margherita", 5.5)
+pepperoni = Pizza("Pepperoni", 7.5)
+
+# Create an order
+order = Order()
+
+# Add pizzas to the order
+order.add_pizza(margherita)
+order.add_pizza(pepperoni)
+
+# Calculate the total
+total = order.calculate_total()
+print(f"The total order cost is ${total}")
