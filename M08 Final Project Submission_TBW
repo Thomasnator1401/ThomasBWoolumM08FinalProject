@@ -1,29 +1,41 @@
 class Pizza:
-    def __init__(self, name, price):
+    def __init__(self, name, toppings):
         self.name = name
-        self.price = price
+        self.toppings = toppings
+
+class Menu:
+    def __init__(self):
+        self.pizzas_available = []  # Initialize an empty list for pizzas
 
 class Order:
-    def __init__(self):
-        self.items = []
+    def __init__(self, customer_name):
+        self.customer_name = customer_name
+        self.pizzas = []
 
     def add_pizza(self, pizza):
-        self.items.append(pizza)
+        self.pizzas.append(pizza)
 
-    def calculate_total(self):
-        return sum([pizza.price for pizza in self.items])
+    def display_order(self):
+        print(f"Order for {self.customer_name}:")
+        for pizza in self.pizzas:
+            print(f"- {pizza.name} ({', '.join(pizza.toppings)})")
 
-# Define some pizzas
-margherita = Pizza("Margherita", 5.5)
-pepperoni = Pizza("Pepperoni", 7.5)
+# Example usage:
+menu = Menu()  # Create an instance of the Menu class
+menu.pizzas_available.append(Pizza("Margherita", ["tomato", "mozzarella"]))
+menu.pizzas_available.append(Pizza("Pepperoni", ["tomato", "pepperoni"]))
 
-# Create an order
-order = Order()
+order = Order("Thonmas B Woolum")
+order.add_pizza(menu.pizzas_available[0])
+order.add_pizza(menu.pizzas_available[1])
+order.display_order()
 
-# Add pizzas to the order
-order.add_pizza(margherita)
-order.add_pizza(pepperoni)
+order = Order("Jama McKee")
+order.add_pizza(menu.pizzas_available[0])
+order.add_pizza(menu.pizzas_available[1])
+order.display_order()
 
-# Calculate the total
-total = order.calculate_total()
-print(f"The total order cost is ${total}")
+order = Order("Carol Rueth")
+order.add_pizza(menu.pizzas_available[0])
+order.add_pizza(menu.pizzas_available[1])
+order.display_order()
