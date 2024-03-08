@@ -22,8 +22,10 @@ class Order:
 
 # Example usage:
 menu = Menu()  # Create an instance of the Menu class
+menu.pizzas_available.append(Pizza("Cheese", ["tomato", "cheese"]))
 menu.pizzas_available.append(Pizza("Margherita", ["tomato", "mozzarella"]))
 menu.pizzas_available.append(Pizza("Pepperoni", ["tomato", "pepperoni"]))
+
 
 order = Order("Thonmas B Woolum")
 order.add_pizza(menu.pizzas_available[0])
